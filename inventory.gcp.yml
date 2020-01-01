@@ -1,0 +1,10 @@
+plugin: gcp_compute
+projects:
+  - adv-it-ansible
+zones:
+  - "us-east1-b"
+hostnames:
+  - ansible-ubu
+filters: []
+auth_kind: serviceaccount
+service_account_file: "/home/ansible/ansible-key.json"
