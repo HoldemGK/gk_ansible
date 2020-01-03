@@ -1,3 +1,4 @@
+---
 plugin: gcp_compute
 projects:
   - adv-it-ansible
@@ -7,4 +8,4 @@ hostnames:
   - ansible-ubu
 filters: []
 auth_kind: serviceaccount
-service_account_file: "/home/ansible/ansible-key.json"
+service_account_file: "/home/ansible/keys/ansible-key.json"

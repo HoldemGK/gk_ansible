@@ -1,0 +1,16 @@
+[staging_servers]
+web  ansible_host=10.142.0.14
+
+[dev_servers]
+ubu  ansible_host=10.142.0.5
+
+[prod_servers]
+ubu-p ansible_host=10.142.0.10
+
+[win_servers]
+win ansible_host=10.142.0.6
+
+[lin:children]
+staging_servers
+dev_servers
+prod_servers
