@@ -1,11 +1,11 @@
 [staging_servers]
-web  ansible_host=10.142.0.14
+web  ansible_host=10.142.0.14 owner=stage
 
 [dev_servers]
-ubu  ansible_host=10.142.0.5
+deb  ansible_host=10.142.0.16 owner=dev
 
 [prod_servers]
-ubu-p ansible_host=10.142.0.10
+cent-p ansible_host=10.142.0.15 owner=prod
 
 [win_servers]
 win ansible_host=10.142.0.6
