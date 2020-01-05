@@ -1,0 +1,37 @@
+---
+# tasks file for deploy_apache_web
+
+- block:  #=====Block for REDHAT=====
+    - name: "Install Apache Centos"
+      yum: name=httpd state=latest
+
+    - name: "Start and Enabled server CentOS"
+      service: name=httpd state=started enabled=yes
+
+  when: ansible_os_family == "RedHat"
+
+- block:  #=====Block for DEBIAN=====    
+    - name: "Install Apache Debian"
+      apt: name=apache2 state=latest
+
+    - name: "Start and Enabled server Debian"
+      service: name=apache2 state=started enabled=yes
+
+  when: ansible_os_family != "RedHat"
+
+- name: Generate index.html file
+  template: src=index1.j2 dest={{ destin_folder }}/index.html mode=0555
+  notify:
+    - RestartApacheCentOS
+    - RestartApacheDebian
+
+- name: "Copy file"
+  copy: src={{ item }} dest={{ destin_folder }} mode=0555
+  with_fileglob: "*.*"
+#    loop:
+#      - index1.html
+#      - index2.html
+#      - index3.html
+  notify:
+    - RestartApacheCentOS
+    - RestartApacheDebian
